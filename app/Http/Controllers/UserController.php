@@ -87,4 +87,8 @@ class UserController extends Controller
         $user = Auth::user();
         return $user->tasks;
     }
+
+    public function profile() {
+        return view('home.profile');
+    }
 }

@@ -19,3 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/tasks', 'UserController@myTasks')->name('tasks');
+Route::get('/profile','UserController@profile')->name('profile');
