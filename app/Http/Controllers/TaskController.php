@@ -84,7 +84,4 @@ class TaskController extends Controller
         //
     }
 
-    public function getDoneTasks() {
-        $current_date = Carbon::now();
-    }
 }

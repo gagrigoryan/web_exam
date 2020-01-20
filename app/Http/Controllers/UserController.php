@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -96,5 +97,21 @@ class UserController extends Controller
     public function getMyFriends() {
         $friends = User::orderBy('id', 'desc')->take(5)->get()->except(Auth::user()->id);
         dd($friends);
+    }
+
+    public function getDoneTasks() {
+        $tasks = array();
+        $current_date = Carbon::now();
+        for ($i = 0; $i < 6; $i++) {
+            $day = $current_date->copy()->subDays($i);
+            $day_tasks = array();
+            foreach (Auth::user()->tasks as $task) {
+                if ($task->done_date->equalTo($day)) {
+                    array_push($task);
+                }
+            }
+            $tasks[$i] = $day_tasks;
+        }
+        dd($tasks);
     }
 }

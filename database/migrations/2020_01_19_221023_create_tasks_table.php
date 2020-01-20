@@ -18,6 +18,7 @@ class CreateTasksTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->dateTime('deadline')->nullable();
+            $table->dateTime('done_date')->nullable();
             $table->boolean('is_done')->default(false);
             $table->boolean('is_public')->default(false);
             $table->unsignedBigInteger('user_id');
