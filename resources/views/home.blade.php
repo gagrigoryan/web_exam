@@ -31,6 +31,7 @@
     <link href="{{ asset('css/home/black-dashboard.css') }}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('css/home/demo.css')}}" rel="stylesheet" />
+
 </head>
 
 <body class="">
@@ -162,7 +163,17 @@
                                 <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
                                 <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
                                 <li class="dropdown-divider"></li>
-                                <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
+                                <li class="nav-link">
+                                    <a class="nav-item dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
                             </ul>
                         </li>
                         <li class="separator d-lg-none"></li>
@@ -184,7 +195,9 @@
         </div>
         <!-- End Navbar -->
         <div class="content">
-            @yield('content')
+            <div id="app">
+                @yield('content')
+            </div>
         </div>
         <footer class="footer">
             <div class="container-fluid">
@@ -257,9 +270,11 @@
     </div>
 </div>
 <!--   Core JS Files   -->
-<script src="{{asset('js/home/core/jquery.min.js')}}"></script>
-<script src="{{asset('js/home/core/popper.min.js')}}"></script>
-<script src="{{asset('js/home/core/bootstrap.min.js')}}"></script>
+{{--<script src="{{asset('js/home/core/jquery.min.js')}}"></script>--}}
+{{--<script src="{{asset('js/home/core/popper.min.js')}}"></script>--}}
+{{--<script src="{{asset('js/home/core/bootstrap.min.js')}}"></script>--}}
+<script src="{{ asset('js/app.js') }}"></script>
+
 <script src="{{asset('js/home/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
 <!--  Google Maps Plugin    -->
 <!-- Place this tag in your head or just before your close body tag. -->

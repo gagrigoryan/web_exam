@@ -20,6 +20,8 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('tasks-preview-component', require('./components/TasksPreviewComponent.vue').default);
+Vue.component('friend-list-component', require('./components/FriendListComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
