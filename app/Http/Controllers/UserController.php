@@ -96,18 +96,22 @@ class UserController extends Controller
 
     public function getMyFriends() {
         $friends = User::orderBy('id', 'desc')->take(5)->get()->except(Auth::user()->id);
-        dd($friends);
+        foreach($friends as $friend) {
+            $friend->tasks;
+        }
+        return $friends;
     }
 
     public function getDoneTasks() {
         $tasks = array();
-        $current_date = Carbon::now();
+        $current_date = Carbon::today();
+
         for ($i = 0; $i < 6; $i++) {
             $day = $current_date->copy()->subDays($i);
             $day_tasks = array();
             foreach (Auth::user()->tasks as $task) {
-                if ($task->done_date->equalTo($day)) {
-                    array_push($task);
+                if ($day->diffInDays(Carbon::parse($task->done_date)->format('Y-m-d')) == 0) {
+                    array_push($day_tasks, $task);
                 }
             }
             $tasks[$i] = $day_tasks;
