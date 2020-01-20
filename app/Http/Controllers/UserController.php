@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -90,5 +91,10 @@ class UserController extends Controller
 
     public function profile() {
         return view('home.profile');
+    }
+
+    public function getMyFriends() {
+        $friends = User::orderBy('id', 'desc')->take(5)->get()->except(Auth::user()->id);
+        dd($friends);
     }
 }

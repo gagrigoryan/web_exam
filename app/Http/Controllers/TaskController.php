@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TaskController extends Controller
 {
@@ -81,5 +82,9 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         //
+    }
+
+    public function getDoneTasks() {
+        $current_date = Carbon::now();
     }
 }

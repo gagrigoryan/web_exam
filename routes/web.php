@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/tasks', 'UserController@myTasks')->name('tasks');
 Route::get('/profile','UserController@profile')->name('profile');
+Route::get('/get-some-friends', 'UserController@getMyFriends')->name('get.some.friends');
